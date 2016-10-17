@@ -53,10 +53,10 @@ gulp.task('watch', function () {
   // Add watch rules
   gulp.watch(defaultAssets.server.views).on('change', plugins.livereload.changed);
   gulp.watch(defaultAssets.server.allJS, ['jshint']).on('change', plugins.livereload.changed);
-  gulp.watch(defaultAssets.client.js, ['jshint']).on('change', plugins.livereload.changed);
-  gulp.watch(defaultAssets.client.css, ['csslint']).on('change', plugins.livereload.changed);
-  gulp.watch(defaultAssets.client.sass, ['sass', 'csslint']).on('change', plugins.livereload.changed);
-  gulp.watch(defaultAssets.client.less, ['less', 'csslint']).on('change', plugins.livereload.changed);
+  //gulp.watch(defaultAssets.client.js, ['jshint']).on('change', plugins.livereload.changed);
+  //gulp.watch(defaultAssets.client.css, ['csslint']).on('change', plugins.livereload.changed);
+  gulp.watch(defaultAssets.client.sass, ['sass']).on('change', plugins.livereload.changed);
+  gulp.watch(defaultAssets.client.less, ['less']).on('change', plugins.livereload.changed);
 
   if (process.env.NODE_ENV === 'production') {
     gulp.watch(defaultAssets.server.gulpConfig, ['templatecache', 'jshint']);
@@ -68,7 +68,7 @@ gulp.task('watch', function () {
 });
 
 // CSS linting task
-gulp.task('csslint', function (done) {
+/*gulp.task('csslint', function (done) {
   return gulp.src(defaultAssets.client.css)
     .pipe(plugins.csslint('.csslintrc'))
     .pipe(plugins.csslint.reporter())
@@ -78,6 +78,7 @@ gulp.task('csslint', function (done) {
       }
     }));
 });
+*/
 
 // JS linting task
 gulp.task('jshint', function () {
@@ -259,7 +260,7 @@ gulp.task('protractor', ['webdriver_update'], function () {
 
 // Lint CSS and JavaScript files.
 gulp.task('lint', function (done) {
-  runSequence('less', 'sass', ['csslint', 'eslint', 'jshint'], done);
+  runSequence('less', 'sass', ['eslint', 'jshint'], done);
 });
 
 // Lint project files and minify them into two production files.
