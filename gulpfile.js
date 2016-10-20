@@ -53,7 +53,7 @@ gulp.task('watch', function () {
   // Add watch rules
   gulp.watch(defaultAssets.server.views).on('change', plugins.livereload.changed);
   gulp.watch(defaultAssets.server.allJS, ['jshint']).on('change', plugins.livereload.changed);
-  //gulp.watch(defaultAssets.client.js, ['jshint']).on('change', plugins.livereload.changed);
+  gulp.watch(defaultAssets.client.js, ['jshint']).on('change', plugins.livereload.changed);
   //gulp.watch(defaultAssets.client.css, ['csslint']).on('change', plugins.livereload.changed);
   gulp.watch(defaultAssets.client.sass, ['sass']).on('change', plugins.livereload.changed);
   gulp.watch(defaultAssets.client.less, ['less']).on('change', plugins.livereload.changed);
